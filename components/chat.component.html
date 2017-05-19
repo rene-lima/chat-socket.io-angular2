@@ -1,0 +1,36 @@
+<div>
+  <div class="topo-titulo">
+    <h5 class="center-align">Lucas (atendimento e-conciliador)</h5>
+  </div>
+  <div class="row opcoes-chat">
+    <div class="col s4" (click)="voltar()">
+      Voltar
+    </div>
+    <div class="col s4">
+      Chat
+    </div>
+    <div class="col s4">
+      Histórico
+    </div>
+  </div>
+  <div class="row agrupa-chat" *ngFor="let message of messages">
+    <div class="col-md-12 col-xs-12">
+      <div class="chat-msg" [ngClass]="{'chat-msg-sent': selfAuthored, 'chat-msg-recieved': !selfAuthored}">
+        <p>{{ message.text }}</p>
+        <span class="time">Enviado às: {{ message.date | date: 'shortTime' }}</span>
+        <div class="chat-msg-author">
+          <strong>{{ message.username }}</strong>&nbsp;
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="envia-mensagem">
+    <form>
+      <div class="row hold-enviar">
+        <input class="col s8 m8 l9" type="text" name="messageText" [(ngModel)]="messageText" placeholder="Insira sua mensagem aqui">
+        <div class="col s4 m4 l3 alinha-enviar texto-destaque">
+         <input type="button" (click)="sendMessage()" value="ENVIAR"> 
+        </div>
+      </div>
+    </form>
+  </div>
